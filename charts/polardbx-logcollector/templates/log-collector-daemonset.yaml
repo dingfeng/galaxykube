@@ -52,4 +52,17 @@ spec:
         - name: filebeat-config-file
           configMap:
             name: filebeat-config
+            
+      {{- with .Values.logstash.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.logstash.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.logstash.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+      {{- end }}
  

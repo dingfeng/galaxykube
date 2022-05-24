@@ -76,3 +76,16 @@ spec:
         - name: elastic-cert-volume
           secret:
             secretName:  {{ .Values.logstash.elasticCertsSecretName }}
+
+      {{- with .Values.logstash.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.logstash.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+      {{- end }}
+      {{- with .Values.logstash.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+      {{- end }}
