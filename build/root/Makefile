@@ -185,3 +185,4 @@ helm-package:
 	@mkdir -p target/charts
 	@helm package charts/polardbx-operator -d target/charts
 	@helm package charts/polardbx-monitor -d target/charts
+	@helm package charts/polardbx-logcollector -d target/charts

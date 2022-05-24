@@ -1,0 +1,42 @@
+logstash:
+  image:
+    repo: registry.cn-zhangjiakou.aliyuncs.com/drds_pre
+    name: logstash
+    version: 8.1.2-polardbx-20220419095725
+  name: logstash
+  port: 5044
+  elasticCertsSecretName: elastic-certs-public
+  timezone:
+    name: "Asia/Shanghai"
+    hostPath: "/usr/share/zoneinfo/Asia/Shanghai"
+  resources:
+    limits:
+      cpu: "2"
+      memory: "1Gi"
+    requests:
+      cpu: "0.5"
+      memory: "1Gi"
+  elastic:
+    certsSecretName: elastic-certs-public
+  config:
+    name: logstash-config
+  pipeline:
+    configName: logstash-pipeline
+  spec:
+    replicas: 1
+
+filebeat:
+  image:
+    repo: docker.elastic.co/beats
+    name: filebeat
+    version: 8.1.0
+  name: filebeat
+  serviceAccount:
+    name: filebeat
+  resources:
+    limits:
+      memory: "2Gi"
+      cpu: "2"
+    requests:
+      memory: "2Gi"
+      cpu: "0.5"
