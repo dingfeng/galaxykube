@@ -37,7 +37,7 @@ spec:
         app: {{ .Values.logstash.name }}
     spec:
       containers:
-        - name: loghub
+        - name: {{ .Values.logstash.name }}
           image: {{ .Values.logstash.image.repo }}/{{ .Values.logstash.image.name }}:{{ .Values.logstash.image.version }}
           ports:
             - containerPort: {{ .Values.logstash.port }}

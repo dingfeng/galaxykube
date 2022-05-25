@@ -52,7 +52,7 @@ data:
     
     output.logstash:
       enable: true
-      hosts: ["loghub:{{ .Values.logstash.port }}"]
+      hosts: ["{{ .Values.logstash.name }}:{{ .Values.logstash.port }}"]
 
 kind: ConfigMap
 metadata:
