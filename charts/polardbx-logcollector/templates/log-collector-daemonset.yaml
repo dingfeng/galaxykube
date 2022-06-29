@@ -5,17 +5,18 @@ metadata:
   namespace: {{ .Release.Namespace }}
   labels:
     app: {{ .Values.filebeat.name }}
+    appType: filebeat
     helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
     app.kubernetes.io/instance: {{ .Release.Name }}
 spec:
   selector:
     matchLabels:
-      name: {{ .Values.filebeat.name }}
+      app: {{ .Values.filebeat.name }}
   template:
     metadata:
       labels:
-        name: {{ .Values.filebeat.name }}
+        app: {{ .Values.filebeat.name }}
     spec:
       serviceAccountName:  {{ .Values.filebeat.name }}
       containers:

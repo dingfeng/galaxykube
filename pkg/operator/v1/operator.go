@@ -123,6 +123,17 @@ func setupPolarDBXControllers(opts controllerOptions) error {
 		return err
 	}
 
+	logCollectReconciler := polardbxv1controllers.PolarDBXLogCollectorReconciler{
+		BaseRc:         opts.BaseReconcileContext,
+		LoaderFactory:  opts.LoaderFactory,
+		Logger:         ctrl.Log.WithName("controller").WithName("polardbxlogcollector"),
+		MaxConcurrency: opts.opts.MaxConcurrentReconciles,
+	}
+
+	if err := logCollectReconciler.SetupWithManager(opts.Manager); err != nil {
+		return err
+	}
+
 	return nil
 }
 

@@ -62,9 +62,6 @@ spec:
               port: {{ .Values.logstash.port }}
             initialDelaySeconds: {{ .Values.logstash.livenessProbe.initialDelaySeconds }}
             periodSeconds: {{ .Values.logstash.livenessProbe.periodSeconds }}
-              
-      imagePullSecrets:
-        - name: log-collector-pull-image-secret
 
       volumes:
         - name: config-volume

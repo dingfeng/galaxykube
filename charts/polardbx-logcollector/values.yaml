@@ -1,8 +1,8 @@
 logstash:
   image:
-    repo: registry.cn-zhangjiakou.aliyuncs.com/drds_pre
+    repo: polardbx
     name: logstash
-    version: 8.1.2-polardbx-20220419095725
+    version: 8.1.2-polardbx-20220624153221
   name: logstash
   port: 5044
   elasticCertsSecretName: elastic-certs-public
@@ -43,3 +43,6 @@ filebeat:
     requests:
       memory: "2Gi"
       cpu: "0.5"
+
+logCollector:
+  name: polardbxlogcollector
